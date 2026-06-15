@@ -1106,10 +1106,10 @@ function App() {
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#3E2723] font-serif flex flex-col items-center py-10 px-4">
       <header className="mb-8 text-center max-w-2xl">
-        <h1 className="text-4xl md:text-5xl font-bold mb-3 text-[#2D1B15] tracking-tight" style={{ fontFamily: 'Georgia, serif' }}>
+        <h1 className="text-4xl md:text-5xl font-bold mb-3 text-[#2D1B15] tracking-tight" style={{ fontFamily: '"Kaiti SC", "STKaiti", "KaiTi", "楷体", serif' }}>
           灵岩谱曲台
         </h1>
-        <p className="text-[#5D4037] text-sm md:text-base leading-relaxed" style={{ fontFamily: 'Georgia, serif' }}>在下方五线谱上绘制主旋律后，系统会将音符吸附到敦煌音阶（1-2-3-♯4-5-6）与节奏网格，并通过 AI 后端生成可直接试听的四声部和声建议。</p>
+        <p className="text-[#5D4037] text-sm md:text-base leading-relaxed" style={{ fontFamily: '"Kaiti SC", "STKaiti", "KaiTi", "楷体", serif' }}>在下方五线谱上绘制主旋律后，系统会将音符吸附到敦煌音阶（1-2-3-♯4-5-6）与节奏网格，并通过 AI 后端生成可直接试听的四声部和声建议。</p>
       </header>
 
       <div className="w-full max-w-6xl flex-1 flex flex-col items-center gap-8">
@@ -1161,7 +1161,7 @@ function App() {
         </div>
       </div>
       
-      <footer className="mt-auto pt-8 text-[#8D6E63] text-xs text-center" style={{ fontFamily: 'Georgia, serif' }}>灵岩谱曲台 - Lingyan Composing Platform | 基于 1-2-3-♯4-5-6 敦煌音阶体系</footer>
+      <footer className="mt-auto pt-8 text-[#8D6E63] text-xs text-center" style={{ fontFamily: '"Kaiti SC", "STKaiti", "KaiTi", "楷体", serif' }}>灵岩谱曲台 - Lingyan Composing Platform | 基于 1-2-3-♯4-5-6 敦煌音阶体系</footer>
     </div>
   );
 }

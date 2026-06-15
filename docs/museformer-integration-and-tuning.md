@@ -4,9 +4,9 @@
 
 ## 1. 当前结果
 
-- 线上前端：`http://119.45.228.209`
+- 线上前端：`https://lingfun.fun`
 - GitHub：`https://github.com/RudyJiang-cmd/Lingyan-Studio`
-- AI 后端：浏览器请求 `/api/generate`，前端 Nginx 反向代理到 MuseFormer EIP `43.129.24.82`
+- AI 后端：浏览器请求 `/api/generate`，前端 Nginx 反向代理到 MuseFormer EIP `101.32.72.146`
 - 当前状态：
   - 前端已经真实请求 Museformer 后端
   - 后端已经以 `systemd` 方式稳定运行
@@ -22,7 +22,7 @@
 | 角色 | 地址 | 实际职责 |
 | --- | --- | --- |
 | 前端静态站点 | `119.45.228.209` | Nginx 托管 Vite 构建产物 |
-| 模型后端 | EIP `43.129.24.82` | FastAPI + Museformer 推理服务 |
+| 模型后端 | EIP `101.32.72.146` | FastAPI + Museformer 推理服务 |
 | 代码仓库 | GitHub `RudyJiang-cmd/Lingyan-Studio` | 前后端代码、部署脚本、文档 |
 
 2026-04-30 迁移说明：前端静态站点已迁移到新的包年包月腾讯云服务器 `119.45.228.209`，用于后续 ICP 备案流程；旧的按量/临时服务器在确认新站稳定后再销毁。
@@ -52,7 +52,7 @@
 因此排查被拆成两条独立链路：
 
 1. 前端部署链路：线上是否真的在请求 `/api/generate`
-2. 模型服务链路：`43.129.24.82` 上的 Museformer 是否真的能返回结果
+2. 模型服务链路：`101.32.72.146` 上的 Museformer 是否真的能返回结果
 
 ## 4. 前端接入过程
 
@@ -98,7 +98,7 @@
 
 不是业务代码崩了，而是浏览器安全策略：
 
-- 当前站点是 `http://119.45.228.209`
+- 当前站点是 `https://lingfun.fun`
 - `getUserMedia` 在很多浏览器中要求 `HTTPS` 或 `localhost`
 - 因此线上 IP 直连场景下，录音功能会被浏览器拒绝
 

@@ -15,7 +15,7 @@
 - Added humming and preset input flow, BPM 160 count-in/recording simulation, pitch preview, quartet score animation, browser synthesis playback, and survey/finish pages.
 - Connected the mobile composition stage to the same-origin `/api/generate` Museformer backend path, with strict failure handling: backend failures show an explicit error and never create fake accompaniment tracks.
 - Kept compatibility with legacy backend voices `alto` / `tenor` / `bass` by mapping them to `xiao` / `pipa` / `guqin` in the mobile score.
-- Configured local Vite development proxy for `/api` to the Tencent Cloud Museformer backend `43.129.24.82:8000`.
+- Configured local Vite development proxy for `/api` to the Tencent Cloud Museformer backend `101.32.72.146:8000`.
 - Allowed the seventh scale degree in the mobile pitch snapping path and restored backend generation to direct Museformer token decoding, while preserving the mobile quartet/streaming track UI.
 
 ## 2026-05-04
@@ -35,4 +35,4 @@
 - Preserved generated duration data through the AI request and Museformer backend prompt path.
 - Kept rests and sub-quarter durations out of the editing workflow to avoid confusing player input.
 - Migrated the documented public preview host to `119.45.228.209`, a monthly/yearly Tencent Cloud server prepared for ICP filing.
-- Routed MuseFormer API calls through same-origin `/api/generate`; the frontend Nginx proxy now targets the backend EIP `43.129.24.82`.
+- Routed MuseFormer API calls through same-origin `/api/generate`; the frontend Nginx proxy now targets the backend EIP `101.32.72.146`.

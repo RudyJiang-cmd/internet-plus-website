@@ -6,7 +6,7 @@
 
 <grid>
   <column width-ratio="0.5">
-    <p><b>线上前端</b><br/>http://119.45.228.209</p>
+    <p><b>线上前端</b><br/>https://lingfun.fun</p>
   </column>
   <column width-ratio="0.5">
     <p><b>GitHub</b><br/>https://github.com/RudyJiang-cmd/Lingyan-Studio</p>
@@ -53,7 +53,7 @@
     </tr>
     <tr>
       <td>模型后端</td>
-      <td>EIP 43.129.24.82</td>
+      <td>EIP 101.32.72.146</td>
       <td>FastAPI + Museformer 推理服务</td>
     </tr>
     <tr>
@@ -111,7 +111,7 @@
 </table>
 
 <h2>4.4 录音为什么在公网 IP 上失效</h2>
-<p>不是代码逻辑断了，而是浏览器安全策略。当前站点是 <code>http://119.45.228.209</code>，很多浏览器要求 <b>HTTPS 或 localhost</b> 才允许 <code>getUserMedia</code> 打开麦克风。现在前端已经会把这个原因直接告诉用户，但要彻底修复仍然需要 HTTPS。</p>
+<p>不是代码逻辑断了，而是浏览器安全策略。当前站点已切到 <code>https://lingfun.fun</code>，满足多数浏览器对 <code>getUserMedia</code> 的 HTTPS / localhost 要求。</p>
 
 <h1>5. 部署链路修复</h1>
 <p>核心文件是 <code>deploy_pem.exp</code>。这里踩到过一个很典型的“假部署”：</p>

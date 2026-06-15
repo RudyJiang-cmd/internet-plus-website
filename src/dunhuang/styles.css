@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  font-family: "Source Han Serif SC", "Noto Serif SC", "Songti SC", "SimSun", serif;
+  font-family: "Kaiti SC", "STKaiti", "KaiTi", "楷体", serif;
   color: #4a2d1f;
   background-color: #ead6aa;
   font-synthesis: none;

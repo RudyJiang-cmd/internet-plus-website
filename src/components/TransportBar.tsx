@@ -25,7 +25,7 @@ const TransportBar: React.FC<TransportBarProps> = ({ mode, totalSteps, activeSte
   return (
     <div className="w-full max-w-6xl">
       <div className="flex items-center gap-4 bg-white/60 backdrop-blur-sm px-5 py-3 rounded-2xl border border-[#EFEBE1]">
-        <div className="text-sm text-[#5D4037] min-w-[56px]" style={{ fontFamily: 'Georgia, serif' }}>{label}</div>
+        <div className="text-sm text-[#5D4037] min-w-[56px]" style={{ fontFamily: '"Kaiti SC", "STKaiti", "KaiTi", "楷体", serif' }}>{label}</div>
 
         <div className="flex items-center gap-1.5">
           {Array.from({ length: 4 }).map((_, i) => {
@@ -65,7 +65,7 @@ const TransportBar: React.FC<TransportBarProps> = ({ mode, totalSteps, activeSte
           })}
         </div>
 
-        <div className="text-xs text-[#8D6E63] min-w-[180px] text-right" style={{ fontFamily: 'Georgia, serif' }}>
+        <div className="text-xs text-[#8D6E63] min-w-[180px] text-right" style={{ fontFamily: '"Kaiti SC", "STKaiti", "KaiTi", "楷体", serif' }}>
           {mode === 'recording' ? detectText : mode === 'playing' ? (phaseLabel || phaseSummary || '') : ''}
         </div>
       </div>

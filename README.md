@@ -11,7 +11,7 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-38B2AC.svg?style=flat&logo=tailwind-css)](https://tailwindcss.com/)
 [![Zustand](https://img.shields.io/badge/Zustand-5-brown.svg?style=flat)](https://github.com/pmndrs/zustand)
 
-[**🌐 访问在线预览**](http://119.45.228.209)
+[**🌐 访问在线预览**](https://lingfun.fun)
 
 </div>
 

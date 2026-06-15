@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: "Kaiti SC", "STKaiti", "KaiTi", "楷体", serif;
   line-height: 1.5;
   font-weight: 400;
 

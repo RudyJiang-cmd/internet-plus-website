@@ -242,7 +242,7 @@ const ScoreGrid: React.FC<ScoreGridProps> = ({
             style={{
               fontSize: 102,
               lineHeight: '1',
-              fontFamily: '"Noto Music", Georgia, serif',
+              fontFamily: '"Noto Music", "Kaiti SC", "STKaiti", "KaiTi", "楷体", serif',
               opacity: 0.96,
               transform: 'translateY(-12px)'
             }}
@@ -261,7 +261,7 @@ const ScoreGrid: React.FC<ScoreGridProps> = ({
             color: '#2D1B15',
             fontSize: 90,
             lineHeight: '1',
-            fontFamily: '"Baskerville","Times New Roman",serif',
+            fontFamily: '"Kaiti SC", "STKaiti", "KaiTi", "楷体", serif',
             fontWeight: 700,
             textAlign: 'center',
             transform: 'scaleX(0.8) scaleY(1.05)',
@@ -281,7 +281,7 @@ const ScoreGrid: React.FC<ScoreGridProps> = ({
             color: '#2D1B15',
             fontSize: 90,
             lineHeight: '1',
-            fontFamily: '"Baskerville","Times New Roman",serif',
+            fontFamily: '"Kaiti SC", "STKaiti", "KaiTi", "楷体", serif',
             fontWeight: 700,
             textAlign: 'center',
             transform: 'scaleX(0.8) scaleY(1.05)',
@@ -358,7 +358,7 @@ const ScoreGrid: React.FC<ScoreGridProps> = ({
 
         <div 
           className="absolute inset-0 z-10 cursor-crosshair touch-none"
-          style={{ fontFamily: 'Georgia, serif' }}
+          style={{ fontFamily: '"Kaiti SC", "STKaiti", "KaiTi", "楷体", serif' }}
           onPointerDown={(e) => {
             e.currentTarget.setPointerCapture(e.pointerId);
             const rect = e.currentTarget.getBoundingClientRect();
@@ -484,7 +484,7 @@ const ScoreGrid: React.FC<ScoreGridProps> = ({
                   top: '50%',
                   transform: 'translateY(-58%)',
                   fontSize: 24,
-                  fontFamily: 'Georgia, serif',
+                  fontFamily: '"Kaiti SC", "STKaiti", "KaiTi", "楷体", serif',
                   opacity: 0.3,
                 }}
               >
@@ -542,7 +542,7 @@ const ScoreGrid: React.FC<ScoreGridProps> = ({
                     top: '50%',
                     transform: 'translateY(-58%)',
                     fontSize: 24,
-                    fontFamily: 'Georgia, serif',
+                    fontFamily: '"Kaiti SC", "STKaiti", "KaiTi", "楷体", serif',
                   }}
                 >
                   ♯

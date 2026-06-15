@@ -3,12 +3,9 @@ import { AnimatePresence, motion } from 'framer-motion';
 import {
   ArrowLeft,
   ChevronRight,
-  Mic,
   Music4,
-  Play,
   RotateCcw,
   Sparkles,
-  SquareCheckBig,
   Volume2,
 } from 'lucide-react';
 
@@ -106,15 +103,6 @@ const stageLabel: Record<Stage, string> = {
   compose: '织谱',
   survey: '回声',
   done: '完成',
-};
-
-const stageHint: Record<Stage, string> = {
-  intro: '先确认规则',
-  input: '选一种进入方式',
-  capture: '收下你的旋律',
-  compose: '逐轨展开成四重奏',
-  survey: '给一点真实反馈',
-  done: '谢谢你完成体验',
 };
 
 const motionEase = [0.22, 1, 0.36, 1] as const;
@@ -928,8 +916,8 @@ function ScoreLane({
                 lineHeight: '1',
                 fontFamily: '"Noto Music", Georgia, serif',
                 opacity: 0.96,
-                transform: 'translateY(-7px) scale(1.25)',
-                transformOrigin: 'top center',
+                transform: 'scale(0.75)',
+                transformOrigin: 'center center',
               }}
             >
               𝄞
@@ -1053,7 +1041,7 @@ function ScoreLane({
                       top: '50%',
                       transform: 'translateY(-58%)',
                       fontSize: 14,
-                      fontFamily: 'Georgia, serif',
+                      fontFamily: '"Kaiti SC", "STKaiti", "KaiTi", "楷体", serif',
                     }}
                   >
                     ♯
@@ -1264,7 +1252,10 @@ export default function App() {
     if (stage !== 'compose') return;
 
     clearTimers();
-    resetCompose();
+    const currentTrackLibrary = trackLibraryRef.current;
+    setTracks([currentTrackLibrary[0]]);
+    setActiveTrackCount(1);
+    setPlayhead(0);
 
     Array.from({ length: 4 }).forEach((_, loopIndex) => {
       Array.from({ length: CAPTURE_TOTAL_BEATS }).forEach((__, beatIndex) => {
@@ -1299,17 +1290,6 @@ export default function App() {
       setPlayhead(0);
     };
   }, [stage, composeRun]);
-
-  const enterCapture = () => {
-    clearTimers();
-    setCaptureStarted(false);
-    setCapturePhase('idle');
-    setRecordProgress(0);
-    setRecordBeat(0);
-    setCountdown(CAPTURE_COUNT_IN_BEATS);
-    setDetectedPitch('待识别');
-    setStage('capture');
-  };
 
   const enterCaptureAndBegin = async (mode: InputMode) => {
     clearTimers();
@@ -1421,15 +1401,19 @@ export default function App() {
   const startComposeGeneration = async (inputNotes: Array<number | null>) => {
     setIsCheckingBackend(true);
     setGenerationError('');
+    enterCompose();
+    setLeaderNotes(inputNotes);
+    const leaderOnlyTracks = buildTrackLibrary(inputNotes, {});
+    trackLibraryRef.current = leaderOnlyTracks;
+    setTracks([leaderOnlyTracks[0]]);
+    setActiveTrackCount(1);
+    setPlayhead(0);
+    setGeneratedTrackNotes({});
     try {
       await checkBackendReady();
     } catch (error) {
       const message = error instanceof Error ? error.message : '后端连接失败';
       setGenerationError(`后端连接失败：${message}`);
-      setCaptureStarted(false);
-      setCapturePhase('idle');
-      setPlayhead(0);
-      setActiveTrackCount(1);
       return;
     } finally {
       setIsCheckingBackend(false);
@@ -1437,14 +1421,7 @@ export default function App() {
 
     generationRequestId.current += 1;
     const requestId = generationRequestId.current;
-    const leaderOnlyTracks = buildTrackLibrary(inputNotes, {});
-    trackLibraryRef.current = leaderOnlyTracks;
-    setTracks([leaderOnlyTracks[0]]);
-    setActiveTrackCount(1);
-    setPlayhead(0);
-    setGeneratedTrackNotes({});
     setGenerationError('');
-    enterCompose();
     void generateArrangement(inputNotes, requestId);
   };
 

@@ -1,0 +1,34 @@
+#!/usr/bin/expect -f
+set timeout 600
+
+set ip [lindex $argv 0]
+set user [lindex $argv 1]
+set domain [lindex $argv 2]
+set email [lindex $argv 3]
+
+if {$ip eq "" || $user eq "" || $domain eq "" || $email eq ""} {
+    puts "Usage: ./setup_https.exp <ip> <user> <domain> <email>"
+    exit 1
+}
+
+set key_path ""
+foreach candidate [list "/Users/jiangyihang/Downloads/ICP.pem" "ICP.pem" "/Users/jiangyihang/Downloads/TRAE.pem" "TRAE.pem"] {
+    if {[file exists $candidate]} {
+        set key_path $candidate
+        break
+    }
+}
+if {$key_path eq ""} {
+    puts "ERROR: no SSH key found. Tried ICP.pem and TRAE.pem in project root and Downloads."
+    exit 1
+}
+
+spawn scp -i $key_path -o StrictHostKeyChecking=no scripts/enable_https_nginx.sh $user@$ip:/tmp/enable_https_nginx.sh
+expect eof
+
+spawn ssh -i $key_path -o StrictHostKeyChecking=no $user@$ip
+expect "*$*"
+send "chmod +x /tmp/enable_https_nginx.sh && sudo /tmp/enable_https_nginx.sh $domain $email\r"
+expect "*$*"
+send "exit\r"
+expect eof
