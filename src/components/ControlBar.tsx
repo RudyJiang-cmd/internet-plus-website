@@ -11,6 +11,7 @@ type ControlBarProps = {
   isPlaying: boolean;
   isCountingIn: boolean;
   isRecording: boolean;
+  aiEnabled: boolean;
 };
 
 const ControlBar: React.FC<ControlBarProps> = ({
@@ -22,6 +23,7 @@ const ControlBar: React.FC<ControlBarProps> = ({
   isPlaying,
   isCountingIn,
   isRecording,
+  aiEnabled,
 }) => {
   return (
     <div className="flex flex-wrap items-center gap-4 bg-white/80 backdrop-blur-sm p-4 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-[#EFEBE1]">
@@ -58,11 +60,12 @@ const ControlBar: React.FC<ControlBarProps> = ({
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
         onClick={onHarmonize}
-        disabled={isGenerating || isPlaying || isCountingIn || isRecording}
+        disabled={!aiEnabled || isGenerating || isPlaying || isCountingIn || isRecording}
+        title={aiEnabled ? '生成和声' : 'AI 生成服务暂时停用'}
         className="relative overflow-hidden group flex items-center gap-2 px-6 py-3 bg-[#2D1B15] text-white rounded-xl font-medium transition-colors disabled:opacity-70"
       >
         <Sparkles className={`w-5 h-5 ${isGenerating ? 'animate-spin' : ''}`} />
-        <span>{isGenerating ? '正在生成和声...' : '生成和声'}</span>
+        <span>{!aiEnabled ? 'AI 服务已暂停' : isGenerating ? '正在生成和声...' : '生成和声'}</span>
         <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-[shimmer_1.5s_infinite]" />
       </motion.button>
 

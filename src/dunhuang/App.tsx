@@ -8,6 +8,7 @@ import {
   Sparkles,
   Volume2,
 } from 'lucide-react';
+import { AI_DISABLED_MESSAGE, AI_ENABLED } from '../lib/aiConfig';
 
 type WindowWithWebkitAudio = Window & {
   webkitAudioContext?: typeof AudioContext;
@@ -1372,6 +1373,10 @@ export default function App() {
   };
 
   const checkBackendReady = async () => {
+    if (!AI_ENABLED) {
+      throw new Error(AI_DISABLED_MESSAGE);
+    }
+
     const controller = new AbortController();
     const timeoutId = window.setTimeout(() => controller.abort(), AI_HEALTH_TIMEOUT_MS);
     try {
@@ -1409,6 +1414,12 @@ export default function App() {
     setActiveTrackCount(1);
     setPlayhead(0);
     setGeneratedTrackNotes({});
+    if (!AI_ENABLED) {
+      setIsCheckingBackend(false);
+      setGenerationError(AI_DISABLED_MESSAGE);
+      return;
+    }
+
     try {
       await checkBackendReady();
     } catch (error) {
@@ -1876,8 +1887,9 @@ export default function App() {
             onClick={() => {
               void startComposeGeneration(leaderNotes);
             }}
+            disabled={!AI_ENABLED}
           >
-            重新计算
+            {AI_ENABLED ? '重新计算' : 'AI 已暂停'}
           </GhostButton>
           <PrimaryButton
             className="h-[52px] rounded-[12px] px-2 text-[15px]"

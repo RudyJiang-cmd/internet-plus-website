@@ -3,6 +3,7 @@ import ScoreGrid from './components/ScoreGrid';
 import ControlBar from './components/ControlBar';
 import TransportBar, { type TransportMode } from './components/TransportBar';
 import { ArrangementPhase, Note, NoteDuration, Voice } from './types';
+import { AI_DISABLED_MESSAGE, AI_ENABLED } from './lib/aiConfig';
 
 type BrowserAudioContextConstructor = typeof AudioContext;
 
@@ -1024,6 +1025,10 @@ function App() {
   const handleHarmonize = useCallback(async () => {
     if (isCountingIn || isRecording) return;
     if (isGenerating) return;
+    if (!AI_ENABLED) {
+      alert(AI_DISABLED_MESSAGE);
+      return;
+    }
     if (isPlaying) stopPlayback();
     setIsGenerating(true);
 
@@ -1122,6 +1127,7 @@ function App() {
           isPlaying={isPlaying}
           isCountingIn={isCountingIn}
           isRecording={isRecording}
+          aiEnabled={AI_ENABLED}
         />
 
         <TransportBar

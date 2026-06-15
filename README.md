@@ -104,6 +104,10 @@ npm run build
 1. 在项目根目录运行 `npx vercel`
 2. 按照命令行提示完成部署即可。
 
+### GitHub Pages 静态归档部署
+
+仓库包含 GitHub Pages Actions。Pages 构建会设置 `VITE_AI_ENABLED=false`，保留静态交互并停止所有 AI 后端请求。恢复 AI 服务时，需要重新部署 Museformer 后端，并在对应环境中设置 `VITE_AI_ENABLED=true` 和 API 地址。
+
 ### Nginx 手动部署
 将 `npm run build` 生成的 `dist` 目录下的所有文件复制到服务器的 `/var/www/html` 目录下，并确保 Nginx 正确配置了静态文件服务。若需要启用 AI 和声，还需保证前端请求的后端地址可访问。
 
